@@ -3,32 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess a Number</title>
-    <link rel="stylesheet" href="style.css" class="css">
+    <title>Number Guessing Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <h1>Guess a Number</h1>
-    <main class="container">
-        <h2>Game Started</h2>
-        <div class="gameimfo">
-            <p>
-                Computer Generated Number <br>
-                Guess a Number! (1 - 100)
-            </p>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 lg:mx-auto">
+    <div class="w-full max-w-lg bg-white/20 backdrop-blur-lg shadow-2xl rounded-3xl p-8 text-white">
+        <div id="welcome-screen" class="text-center">
+            <h1 class="text-5xl font-extrabold mb-6 text-white drop-shadow-lg">🎯 Guess the Number</h1>
+            <input id="player-name" type="text" placeholder="Enter your name" class="w-full p-4 border-none rounded-xl text-2xl bg-white/30 placeholder-gray-300 text-black mb-4">
+            
+            <select id="difficulty" class="w-full p-4 border-none rounded-xl text-2xl bg-white/30 text-black mb-4">
+                <option value="easy">Easy (1-50)</option>
+                <option value="medium" selected>Medium (1-100)</option>
+                <option value="hard">Hard (1-1000)</option>
+            </select>
 
-            <div id="display">Result</div>
+            <label class="flex items-center justify-center space-x-3 cursor-pointer text-2xl mb-6">
+                <input id="enable-hints" type="checkbox" class="accent-green-500 w-6 h-6"> 
+                <span class="text-white">Enable Hints</span>
+            </label>
+
+            <button id="start-game" class="w-full bg-blue-500 hover:bg-blue-600 transition-all text-white text-3xl font-semibold p-4 rounded-xl shadow-lg">🚀 Start Game</button>
         </div>
 
-        <input type="text" placeholder="Guess a number" id="userInput" maxlength="2">
+        <div id="game-screen" class="hidden text-center">
+            <h2 class="text-5xl font-extrabold mb-6 text-white drop-shadow-lg">🔢 Guess the Number!</h2>
 
-        <div class="btns">
-            <button onclick="startgame()">Submit</button>
-            <button onclick="reset()">Play Again</button>
+            <p id="feedback" class="text-gray-200 text-2xl mb-2"></p>
+
+            <input id="guess-input" type="number" placeholder="Enter your guess" class="w-full p-4 border-none rounded-xl text-2xl bg-white/30 text-black mt-3">
+            
+            <button id="submit-guess" class="w-full bg-green-500 hover:bg-green-600 transition-all text-white text-3xl font-semibold p-4 rounded-xl shadow-lg mt-3">✅ Submit Guess</button>
+            
+            <p id="hint" class="text-gray-300 text-2xl mt-3"></p>
+
+            <button id="play-again" class="w-full bg-yellow-500 hover:bg-yellow-600 transition-all text-white text-3xl font-semibold p-4 rounded-xl shadow-lg mt-4 hidden">🔄 Play Again</button>
         </div>
-    </main>
+
+        <div id="leaderboard-screen" class="hidden text-center mt-6">
+            <h2 class="text-3xl font-semibold">🏆 Leaderboard</h2>
+            <ul id="leaderboard" class="mt-3 text-xl space-y-3"></ul>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 
